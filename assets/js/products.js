@@ -1,4 +1,3 @@
-
 const products = [
   {
     id: 1,
@@ -360,7 +359,7 @@ const products = [
       "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/2.png",
       "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/3.png"
     ],
-    thumbnail: "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/thumbnail.png"
+    thumbnail: "assets/images/ck.png"
   },
   {
     id: 7,
@@ -546,7 +545,7 @@ const products = [
       "https://cdn.dummyjson.com/products/images/fragrances/Dolce%20Shine%20Eau%20de/2.png",
       "https://cdn.dummyjson.com/products/images/fragrances/Dolce%20Shine%20Eau%20de/3.png"
     ],
-    thumbnail: "https://cdn.dummyjson.com/products/images/fragrances/Dolce%20Shine%20Eau%20de/thumbnail.png"
+    thumbnail: "assets/images/dolce.png"
   },
   {
     id: 10,
@@ -1152,7 +1151,7 @@ const products = [
       "https://cdn.dummyjson.com/products/images/groceries/Chicken%20Meat/1.png",
       "https://cdn.dummyjson.com/products/images/groceries/Chicken%20Meat/2.png"
     ],
-    thumbnail: "https://cdn.dummyjson.com/products/images/groceries/Chicken%20Meat/thumbnail.png"
+    thumbnail: "assets/images/chicken.png"
   },
   {
     id: 20,

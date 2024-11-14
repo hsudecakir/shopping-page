@@ -1,40 +1,59 @@
 const productList = document.querySelector('.products-grid-container');
 
-
-function render(){
+function render(products){
+  productList.innerHTML = '';
   for (const product of products) {
     productList.innerHTML += `
       <div class="products-grid-item">
         <div class="product-image">
           <img src="${product.thumbnail}">
         </div>
+        <div class="ratings">
+          <div class="stars-container">
+            <span class="stars">★★★★★</span>
+            <span data-rating="${product.rating}" class="stars-filled">★★★★★</span>
+          </div>
+          <p class="rating-text">${product.rating}</p>
+        </div>
         <div class="product-info">
-          <p class="product-title">${product.title}</p>
           <p class="product-category">${product.category}</p>
-          <p class="product-description">${product.description}</p>
+          <p class="product-title">${product.title}</p>
         </div>
         <div class="product-price-info">
-          <p class="product-price">${product.price}</p>
-          <p class="product-stock">${product.stock}</p>
+          <p class="product-full-price">$${(((product.price) * 100) / (100 - product.discountPercentage)).toFixed(2)}</p>
+          <p class="product-price">$${product.price}</p>
         </div>
-        <div class="product-tags">
-          
-        </div>
+        <p class="product-description">${product.description}</p>
+        <div class="product-tags">#${(product.tags).join(' #')}</div>
+        <p class="product-stock">Remaining stock: ${product.stock}</p>
       </div>    
     `
   }
-  const productTagsTxts = document.querySelectorAll('.product-tags');
 
-  for (const productTagsTxt of productTagsTxts) {
-    for (const product of products) {
-      for (const tag of product.tags) {
-        productTagsTxt.innerHTML += `
-            <p class="product-tag">${tag}</p>
-        `
-      }
-      return;
-    }
+  const starsFilleds = document.querySelectorAll('.stars-filled');
+  for (const starsFilled of starsFilleds) {
+    const percentage = (starsFilled.dataset.rating / 5) * 100;
+    starsFilled.style.width = `${percentage}%`;
   }
 }
 
-render();
+function searchProduct(){
+  const inputValue = searchInput.value.toLowerCase()
+  const searchedProducts = products.filter(product => product.title.toLowerCase().includes(inputValue) || product.category.toLowerCase().includes(inputValue) || product.tags.some(tag => tag.toLowerCase().includes(inputValue)));
+  render(searchedProducts);
+  if(searchedProducts.length === 0){
+    productList.innerHTML = `
+     <div class="empty-search-area">
+        <p class="sorry-icon">:(</p>
+        <p>We couldn't find any products that match your criteria. Please try different filters or search terms.</p>
+      </div>
+    `
+    productList.style.gridTemplateColumns = 'repeat(1, 1fr)';
+  } else{
+    productList.style.gridTemplateColumns = 'repeat(3, 1fr)';
+  }
+}
+
+searchInput.addEventListener('input', searchProduct);
+
+render(products);
