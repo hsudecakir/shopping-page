@@ -41,16 +41,18 @@ function searchProduct(){
   const inputValue = searchInput.value.toLowerCase()
   const searchedProducts = products.filter(product => product.title.toLowerCase().includes(inputValue) || product.category.toLowerCase().includes(inputValue) || product.tags.some(tag => tag.toLowerCase().includes(inputValue)));
   render(searchedProducts);
+
+  const emptyProductArea = document.querySelector('.empty-product-area-container');
   if(searchedProducts.length === 0){
-    productList.innerHTML = `
+    productList.innerHTML = '';
+    emptyProductArea.innerHTML = `
      <div class="empty-search-area">
         <p class="sorry-icon">:(</p>
         <p>We couldn't find any products that match your criteria. Please try different filters or search terms.</p>
       </div>
     `
-    productList.style.gridTemplateColumns = 'repeat(1, 1fr)';
   } else{
-    productList.style.gridTemplateColumns = 'repeat(3, 1fr)';
+    emptyProductArea.innerHTML = '';
   }
 }
 

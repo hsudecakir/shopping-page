@@ -44,6 +44,7 @@ h1, h2, h3, h4, h5, h6{
 body {
 	line-height: 1;
   font-family: "Roboto", sans-serif;
+  background-color: var(--white);
 }
 ol, ul {
 	list-style: none;
@@ -251,4 +252,43 @@ header h1{
   font-size: 70px;
   color: var(--dark-gray);
   font-weight: 700;
+}
+
+@media only screen and (max-width: 1110px){
+  .container{
+    width: 100%;
+    padding: 32px;
+  }
+  .products-grid-container{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+  }
+}
+
+@media only screen and (max-width: 767.98px){
+  .container{
+    width: 100%;
+    padding: 32px;
+  }
+  .products-grid-container{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+  }
+  .search input{
+    padding: 12px 24px;
+    border: none;
+    outline: none;
+    background-color: var(--light-gray);
+    width: 120px;
+    border-radius: 6px;
+    color: var(--text-color);
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .search i{
+    font-size: 12px;
+    right: 7px;
+    top: 12px;
+  }
 }
